@@ -1,4 +1,0 @@
-
-https://forum.arduino.cc/t/will-this-rotary-encoder-work-with-arduino/1351596
-
-https://www.sameskydevices.com/product/resource/sample-code/amt22
