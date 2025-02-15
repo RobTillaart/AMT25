@@ -39,7 +39,7 @@ AMT25::AMT25(uint8_t select, uint8_t dataIn, uint8_t dataOut, uint8_t clock)
 //  initializes the pins and starts SPI in case of hardware SPI
 bool AMT25::begin(uint8_t bits)
 {
-  if ((bits != 12) || (bits != 14)) return false;
+  if ((bits != 12) && (bits != 14)) return false;
   _bits = bits;
   if (bits == 12) _steps = 4096;
   else            _steps = 16384;
@@ -117,6 +117,18 @@ uint32_t AMT25::lastRead()  //  time in micros
   return _lastRead;
 }
 
+//  SPI
+void setSPIspeed(uint32_t speed)
+{
+  _SPIspeed = speed;
+  if (_SPIspeed > 2000000) _SPIspeed = 2000000;
+}
+
+uint32_t getSPIspeed()
+{
+  return _SPIspeed;
+}
+
 //       Debugging
 bool AMT25::usesHWSPI()
 {
@@ -126,7 +138,7 @@ bool AMT25::usesHWSPI()
 
 ////////////////////////////////////////////////////////
 //
-//  PRIVATE
+//  PROTECTED
 //
 uint16_t AMT25::readDevice(uint16_t command)
 {
@@ -188,6 +200,47 @@ bool checkParity(uint16_t raw)
   //  data = shifted 7 times => MSB 2 bits remain.
   return sum == data;
 }
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  DERIVED CLASSES
+//
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  AMT22
+//
+AMT22::AMT22(__SPI_CLASS__ * mySPI)
+      :AMT25(mySPI)
+{
+  //  no diffs known (yet).
+}
+
+AMT22::AMT22(uint8_t select, uint8_t dataIn, uint8_t dataOut, uint8_t clock)
+      :AMT25(select, dataIn, dataOut, clock)
+{
+  //  no diffs known (yet).
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+//  AMT23
+//
+AMT23::AMT23(__SPI_CLASS__ * mySPI)
+      :AMT25(mySPI)
+{
+  //  no diffs known (yet).
+}
+
+AMT23::AMT23(uint8_t select, uint8_t dataIn, uint8_t dataOut, uint8_t clock)
+      :AMT25(select, dataIn, dataOut, clock)
+{
+  //  no diffs known (yet).
+}
+
+
 
 //  -- END OF FILE --
 

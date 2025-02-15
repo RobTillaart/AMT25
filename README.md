@@ -115,6 +115,11 @@ with offset correction.
 Note this wraps every ~70 minutes however for RPM measurements one
 need to read the device far more often.
 
+### HW SPI
+
+- **void setSPIspeed(uint32_t speed)** idem, clipped to max 2 MHz.
+- **uint32_t getSPIspeed()** idem.
+
 
 ### Debugging
 
@@ -129,6 +134,8 @@ need to read the device far more often.
 - test with hardware
 
 #### Should
+
+- test compatibility ANT22 / AMT23
 
 #### Could
 

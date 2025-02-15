@@ -57,7 +57,7 @@ public:
   bool     usesHWSPI();
 
 
-private:
+protected:
   uint8_t  _select;
   uint8_t  _dataIn;
   uint8_t  _dataOut;
@@ -83,7 +83,22 @@ private:
 //
 //  DERIVED CLASSES TODO
 //
-//  AMT21..24
+class AMT22 : public AMT25
+{
+public:
+  AMT22(__SPI_CLASS__ * mySPI = &SPI);
+  AMT22(uint8_t select, uint8_t dataIn, uint8_t dataOut, uint8_t clock);
+};
+
+
+//  to verify (if and how far) it is compatible
+class AMT23 : public AMT25
+{
+public:
+  AMT23(__SPI_CLASS__ * mySPI = &SPI);
+  AMT23(uint8_t select, uint8_t dataIn, uint8_t dataOut, uint8_t clock);
+};
+
 
 //  -- END OF FILE --
 

@@ -1,5 +1,5 @@
 //
-//    FILE: AMT25_HW_SPI_performance.ino
+//    FILE: AMT25_HW_SPI_getTurns.ino
 //  AUTHOR: Rob Tillaart
 // PURPOSE: performance measurements
 //     URL: https://github.com/RobTillaart/AMT25
@@ -23,7 +23,7 @@ void setup()
 
   SPI.begin();
 
-  bool b = re.begin(12);
+  bool b = re.begin(14);
   Serial.print("BEGIN:\t");
   Serial.println(b);
   Serial.println();
@@ -32,11 +32,13 @@ void setup()
   start = micros();
   for (int i = 0; i < 1000; i++)
   {
-    value = re.getRawValue();
+    value = re.getTurns();
   }
   stop = micros();
   Serial.print("TIME:\t");
   Serial.println(stop - start);
+  Serial.print("TURNS:\t");
+  Serial.println(value);
 
   Serial.println("\nDone...");
 }
@@ -46,7 +48,6 @@ void loop()
 {
 
 }
-
 
 
 //  -- END OF FILE --

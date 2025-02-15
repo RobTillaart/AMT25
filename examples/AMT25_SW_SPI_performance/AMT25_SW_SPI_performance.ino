@@ -8,7 +8,8 @@
 #include "AMT25.h"
 
 //  adjust pins if needed
-AMT25 re(4, 5, 6, 7);  //  software SPI
+//  select, dataIn, dataOut, clock
+AMT25 re(4, 5, 6, 7);  //  software SPI, bit bang.
 
 uint32_t start, stop;
 volatile uint16_t value;
