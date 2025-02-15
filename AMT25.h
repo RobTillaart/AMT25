@@ -53,7 +53,9 @@ public:
 
   uint32_t lastRead();
 
-  //       Debugging
+  //  SPI
+  void     setSPIspeed(uint32_t speed);
+  uint32_t getSPIspeed();
   bool     usesHWSPI();
 
 
@@ -86,7 +88,7 @@ protected:
 class AMT22 : public AMT25
 {
 public:
-  AMT22(__SPI_CLASS__ * mySPI = &SPI);
+  AMT22(uint8_t select, __SPI_CLASS__ * mySPI = &SPI);
   AMT22(uint8_t select, uint8_t dataIn, uint8_t dataOut, uint8_t clock);
 };
 
@@ -95,7 +97,7 @@ public:
 class AMT23 : public AMT25
 {
 public:
-  AMT23(__SPI_CLASS__ * mySPI = &SPI);
+  AMT23(uint8_t select, __SPI_CLASS__ * mySPI = &SPI);
   AMT23(uint8_t select, uint8_t dataIn, uint8_t dataOut, uint8_t clock);
 };
 

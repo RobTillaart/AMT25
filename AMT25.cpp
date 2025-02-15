@@ -118,13 +118,13 @@ uint32_t AMT25::lastRead()  //  time in micros
 }
 
 //  SPI
-void setSPIspeed(uint32_t speed)
+void AMT25::setSPIspeed(uint32_t speed)
 {
   _SPIspeed = speed;
   if (_SPIspeed > 2000000) _SPIspeed = 2000000;
 }
 
-uint32_t getSPIspeed()
+uint32_t AMT25::getSPIspeed()
 {
   return _SPIspeed;
 }
@@ -211,8 +211,8 @@ bool checkParity(uint16_t raw)
 //
 //  AMT22
 //
-AMT22::AMT22(__SPI_CLASS__ * mySPI)
-      :AMT25(mySPI)
+AMT22::AMT22(uint8_t select, __SPI_CLASS__ * mySPI)
+      :AMT25(select, mySPI)
 {
   //  no diffs known (yet).
 }
@@ -228,8 +228,8 @@ AMT22::AMT22(uint8_t select, uint8_t dataIn, uint8_t dataOut, uint8_t clock)
 //
 //  AMT23
 //
-AMT23::AMT23(__SPI_CLASS__ * mySPI)
-      :AMT25(mySPI)
+AMT23::AMT23(uint8_t select, __SPI_CLASS__ * mySPI)
+      :AMT25(select, mySPI)
 {
   //  no diffs known (yet).
 }

@@ -101,6 +101,8 @@ with the sensor and this (or other) library.
 - **AMT25(uint8_t select, uint8_t dataIn, uint8_t dataOut, uint8_t clock)** SOFTWARE SPI
 - **bool begin(uint8_t bits = 14)** initializes the communication, set number of bits.
 
+AMT22 and AMT23 derived classes have same constructors.
+
 
 ### Read
 
@@ -115,15 +117,12 @@ with offset correction.
 Note this wraps every ~70 minutes however for RPM measurements one
 need to read the device far more often.
 
-### HW SPI
+
+### SPI
 
 - **void setSPIspeed(uint32_t speed)** idem, clipped to max 2 MHz.
 - **uint32_t getSPIspeed()** idem.
-
-
-### Debugging
-
-- **bool usesHWSPI()**
+- **bool usesHWSPI()** idem.
 
 
 ## Future
